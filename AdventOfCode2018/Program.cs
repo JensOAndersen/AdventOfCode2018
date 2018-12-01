@@ -11,22 +11,24 @@ namespace AdventOfCode2018
     {
         static void Main(string[] args)
         {
-            DayOne();
+            var dayOne = DayOne();
+
+            Console.WriteLine(dayOne.partOne);
+            Console.WriteLine(dayOne.partTwo);
 
             Console.ReadKey();
         }
 
-        static void DayOne()
+        static (int partOne, int partTwo) DayOne()
         {
             AoCUtils utils = new AoCUtils();
             var input = utils.ReadFileAsIntArray("inputDayOne.txt");
 
-            PartOne();
-            PartTwo();
+            return (PartOne(), PartTwo());
 
             //Iterate through the list infinitely until a frequency is seen again
             //This could probably need some optimization, i'm not sure how though - BUT IT WORKS!
-            void PartTwo()
+            int PartTwo()
             {
                 List<int> foundFrequencies = new List<int>() { 0 };
 
@@ -39,8 +41,7 @@ namespace AdventOfCode2018
 
                     if (foundFrequencies.Contains(currentFrequency))
                     {
-                        Console.WriteLine($"The answer to part two is:{currentFrequency} in {i} iterations");
-                        break;
+                        return currentFrequency;
                     }
                     else
                     {
@@ -50,10 +51,9 @@ namespace AdventOfCode2018
             }
 
             //basically the sum of the array
-            void PartOne()
+            int PartOne()
             {
-                var solution = input.Sum();
-                Console.WriteLine(solution);
+                return input.Sum();
             }
         }
     }
