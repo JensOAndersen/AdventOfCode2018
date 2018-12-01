@@ -8,12 +8,18 @@ namespace Utils
 {
     public class AoCUtils
     {
+        private string fileName;
+        public AoCUtils(string fileName)
+        {
+            this.fileName = fileName;
+        }
+
         /// <summary>
         /// Reads a file as an array of ints
         /// </summary>
         /// <param name="fileName">name for the file, remember filetype</param>
         /// <returns>an array of ints, one int per line in the input</returns>
-        public int[] ReadFileAsIntArray(string fileName)
+        public int[] ReadFileAsIntArray()
         {
             List<int> output = new List<int>();
 
@@ -40,7 +46,7 @@ namespace Utils
         /// </summary>
         /// <param name="fileName">name of the file, remember file type</param>
         /// <returns>an array of strings, one item per line in the file</returns>
-        public string[] ReadFileAsStringArray(string fileName)
+        public string[] ReadFileAsStringArray()
         {
             List<string> output = new List<string>();
 
