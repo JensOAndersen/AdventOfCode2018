@@ -8,13 +8,13 @@ namespace Solutions
     public class DayOne : BaseSolution
     {
         int[] input;
-
-        public DayOne(string fileName) : base(fileName)
+        
+        public DayOne(string fileName, string name) : base(fileName, name)
         {
             input = utils.ReadFileAsIntArray();
         }
 
-        public int PartTwo() //Loop through the list and look for duplicates infinitely
+        public override string PartTwo() //Loop through the list and look for duplicates infinitely
         {
             List<int> foundFrequencies = new List<int>() { 0 };
 
@@ -27,7 +27,7 @@ namespace Solutions
 
                 if (foundFrequencies.Contains(currentFrequency))
                 {
-                    return currentFrequency;
+                    return currentFrequency.ToString();
                 }
                 else
                 {
@@ -36,10 +36,10 @@ namespace Solutions
             }
         }
 
-        public int PartOne()
+        public override string PartOne()
         {
             //basically the sum of the list
-            return input.Sum();
+            return input.Sum().ToString();
         }
     }
 }
