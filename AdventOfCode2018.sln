@@ -3,16 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2018", "AdventOfCode2018\AdventOfCode2018.csproj", "{01509D7C-C1E5-4EF8-9FF8-D407CFE380FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2018", "AdventOfCode2018\AdventOfCode2018.csproj", "{01509D7C-C1E5-4EF8-9FF8-D407CFE380FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{217221A2-9EFC-4866-A84A-350BBB5F0406}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", "Utils\Utils.csproj", "{217221A2-9EFC-4866-A84A-350BBB5F0406}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inputs", "Inputs", "{743F4298-DE14-4C4E-A2F1-A40EE797CE0C}"
 	ProjectSection(SolutionItems) = preProject
 		Inputs\inputDayOne.txt = Inputs\inputDayOne.txt
+		inputDayTwo.txt = inputDayTwo.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solutions", "Solutions\Solutions.csproj", "{8C464790-72F3-460A-B5E8-7DF1912E29C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solutions", "Solutions\Solutions.csproj", "{8C464790-72F3-460A-B5E8-7DF1912E29C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
