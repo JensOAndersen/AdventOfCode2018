@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Utils;
 
@@ -11,16 +12,6 @@ namespace Solutions
         public DayTwo(string fileName, string name) : base(fileName, name)
         {
             input = utils.ReadFileAsStringArray();
-
-            //input = new string[] {
-            //    "abcdef",
-            //    "bababc",
-            //    "abbcde",
-            //    "abcccd",
-            //    "aabcdd",
-            //    "abcdee",
-            //    "ababab"
-            //};
         }
 
         public override string PartOne()
@@ -54,7 +45,39 @@ namespace Solutions
 
         public override string PartTwo()
         {
-            return "method not implemented";
+            List<IEnumerable<char>> myInput = new List<IEnumerable<char>>();
+            foreach (string s in input)
+            {
+                myInput.Add(s.ToCharArray());
+            }
+
+
+            foreach (var setOne in myInput)
+            {
+                foreach (var setTwo in myInput)
+                {
+                    if(setOne != setTwo)
+                    {
+                        int diff = 0;
+
+                        for (int i = 0; i < setOne.Count(); i++)
+                        {
+                            if (setOne.ElementAt(i) != setTwo.ElementAt(i))
+                            {
+                                diff++;
+                            }
+                        }
+                        if (diff == 1)
+                        {
+                            string one = string.Join(" ", setOne);
+                            string two = string.Join(" ", setTwo);
+                            return string.Join("",setOne.Intersect(setTwo).ToList());
+                        }
+                    }
+                }
+            }
+
+            return "There was no string with a difference of one";
         }
     }
 }

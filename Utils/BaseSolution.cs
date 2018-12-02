@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Utils
 {
-    public abstract class BaseSolution
+    public  class BaseSolution
     {
         protected readonly AoCUtils utils;
         private string name;
 
-        public BaseSolution(string fileName, string name)
+        protected BaseSolution(string fileName, string name)
         {
             this.utils = new AoCUtils(fileName);
             this.name = name;
@@ -20,7 +20,13 @@ namespace Utils
             return name;
         }
 
-        public abstract string PartOne();
-        public abstract string PartTwo();
+        public virtual string PartOne()
+        {
+            return "Method not implemented";
+        }
+        public virtual string PartTwo()
+        {
+            return "Method not implemented";
+        }
     }
 }
