@@ -58,6 +58,13 @@ namespace Solutions
                 {
                     if(setOne != setTwo)
                     {
+                        //i wanted to use linq to compare the strings, but intersect and except arent working as i expected them to
+                        //so i had to do it the hard way. It works though
+
+                        //another idea for a solution would be to build strings that is the result of the comparison of the two strings
+                        //and then take the longest string there, as that string would have the most chars
+
+                        //alternally the two foreach loops needs to be optimized, as some sets are being checked multiple times.
                         int diff = 0;
 
                         for (int i = 0; i < setOne.Count(); i++)
@@ -69,9 +76,17 @@ namespace Solutions
                         }
                         if (diff == 1)
                         {
-                            string one = string.Join(" ", setOne);
-                            string two = string.Join(" ", setTwo);
-                            return string.Join("",setOne.Intersect(setTwo).ToList());
+                            //result is: i o s n x m f k p a b c j p d y w v r t a h l u y
+                            string res = "";
+                            for (int i = 0; i < setOne.Count(); i++)
+                            {
+                                if (setOne.ElementAt(i) == setTwo.ElementAt(i))
+                                {
+                                    res += setOne.ElementAt(i);
+                                }
+                            }
+
+                            return res;
                         }
                     }
                 }
