@@ -18,6 +18,7 @@ namespace Solutions
         {
             solutions.Add(new DayOne("inputDayOne.txt", "Day one"));
             solutions.Add(new DayTwo("inputDayTwo.txt", "Day two"));
+            solutions.Add(new DayThree("inputDayThree.txt", "Day Three"));
         }
     }
 }
