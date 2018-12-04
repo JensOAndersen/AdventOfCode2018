@@ -41,12 +41,12 @@ namespace AdventOfCode2018
 
                         break;
 
-                    //Listing all completed solutions
+                    //Listing all registered solutions
                     case ConsoleKey.D2:
-                        Console.WriteLine("Following days have been completed: ");
+                        Console.WriteLine("Following days have been tried for completion: ");
                         foreach (var item in solutions.Solutions)
                         {
-                            Console.WriteLine($"1 - {item}");
+                            Console.WriteLine($"{item}");
                         }
                         break;
 
