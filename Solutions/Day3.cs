@@ -6,13 +6,13 @@ using Utils;
 
 namespace Solutions
 {
-    public class DayThree : BaseSolution
+    public class Day3 : BaseSolution
     {
         string[] input;
         List<Claim> claims = new List<Claim>();
 
         //constructor is used to set up claims, its useful
-        public DayThree(string fileName, string name) : base(fileName, name)
+        public Day3(string fileName, string name) : base(fileName, name)
         {
             input = utils.ReadFileAsStringArray();
 
@@ -38,6 +38,7 @@ namespace Solutions
         //there should be an easy way to solve this mathematically, buuuuut, i dont have that.
         public override string PartOne()
         {
+            Dictionary<(int x, int y), int> newCanvas = new Dictionary<(int x, int y), int>();
             int[,] canvas = new int[1000, 1000];
 
             foreach (var claim in claims)
@@ -49,7 +50,13 @@ namespace Solutions
                 {
                     for (int x = claim.x; x < xEnd; x++)
                     {
-                        canvas[x, y] += 1;
+                        if (!newCanvas.ContainsKey((x, y)))
+                        {
+                            newCanvas.Add((x, y), 1);
+                        } else
+                        {
+                            newCanvas[(x, y)]++;
+                        }
                     }
                 }
             }

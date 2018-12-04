@@ -16,9 +16,9 @@ namespace Solutions
 
         public SolutionHandler()
         {
-            solutions.Add(new DayOne("inputDayOne.txt", "Day one"));
-            solutions.Add(new DayTwo("inputDayTwo.txt", "Day two"));
-            solutions.Add(new DayThree("inputDayThree.txt", "Day Three"));
+            solutions.Add(new Day1("inputDayOne.txt", "Day one"));
+            solutions.Add(new Day2("inputDayTwo.txt", "Day two"));
+            solutions.Add(new Day3("inputDayThree.txt", "Day Three"));
         }
     }
 }

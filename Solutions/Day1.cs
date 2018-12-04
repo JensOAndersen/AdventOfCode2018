@@ -5,11 +5,11 @@ using Utils;
 
 namespace Solutions
 {
-    public class DayOne : BaseSolution
+    public class Day1 : BaseSolution
     {
         int[] input;
         
-        public DayOne(string fileName, string name) : base(fileName, name)
+        public Day1(string fileName, string name) : base(fileName, name)
         {
             input = utils.ReadFileAsIntArray();
         }

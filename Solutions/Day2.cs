@@ -6,10 +6,10 @@ using Utils;
 
 namespace Solutions
 {
-    public class DayTwo : BaseSolution
+    public class Day2 : BaseSolution
     {
         string[] input;
-        public DayTwo(string fileName, string name) : base(fileName, name)
+        public Day2(string fileName, string name) : base(fileName, name)
         {
             input = utils.ReadFileAsStringArray();
         }
