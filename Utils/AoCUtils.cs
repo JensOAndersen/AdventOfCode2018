@@ -42,6 +42,22 @@ namespace Utils
         }
 
         /// <summary>
+        /// Writes an array to a file, useful for debugging
+        /// </summary>
+        /// <param name="input">array of strings</param>
+        /// <param name="fileName">name of the file, remember type</param>
+        public void WriteArrayToFile<T>(T[] input, string fileName)
+        {
+            using(StreamWriter writer = new StreamWriter(GetInputPath() + $@"\{fileName}", true))
+            {
+                foreach (var item in input)
+                {
+                    writer.WriteLine(item);
+                }
+            }
+        }
+
+        /// <summary>
         /// Reads an input file as an array of strings, one line per item in the array
         /// </summary>
         /// <param name="fileName">name of the file, remember file type</param>
