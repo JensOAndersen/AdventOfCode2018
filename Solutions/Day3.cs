@@ -38,8 +38,7 @@ namespace Solutions
         //there should be an easy way to solve this mathematically, buuuuut, i dont have that.
         public override string PartOne()
         {
-            Dictionary<(int x, int y), int> newCanvas = new Dictionary<(int x, int y), int>();
-            int[,] canvas = new int[1000, 1000];
+            Dictionary<(int x, int y), int> canvas = new Dictionary<(int x, int y), int>();
 
             foreach (var claim in claims)
             {
@@ -50,19 +49,19 @@ namespace Solutions
                 {
                     for (int x = claim.x; x < xEnd; x++)
                     {
-                        if (!newCanvas.ContainsKey((x, y)))
+                        if (!canvas.ContainsKey((x, y)))
                         {
-                            newCanvas.Add((x, y), 1);
+                            canvas.Add((x, y), 1);
                         } else
                         {
-                            newCanvas[(x, y)]++;
+                            canvas[(x, y)]++;
                         }
                     }
                 }
             }
 
             int count = 0;
-            foreach (int i in canvas)
+            foreach (int i in canvas.Values)
             {
                 if (i > 1)
                 {
