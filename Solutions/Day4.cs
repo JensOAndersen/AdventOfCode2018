@@ -40,18 +40,57 @@ namespace Solutions
         {
             var awakeMinutes = CalculateGuardsAwakeMinutes();
 
-            var shiftNapTimes = GetShiftNapTimes();
-
-            foreach (var range in shiftNapTimes)
+            KeyValuePair<string, int> mostMinutes = new KeyValuePair<string, int>("",0);
+            foreach (var item in awakeMinutes)
             {
-                foreach (var item in range)
+                if (item.Value > mostMinutes.Value)
                 {
-
+                    mostMinutes = item;
                 }
             }
 
+            var mostSleepyGuardShiftNapTimes = GetShiftNapTimes().Where(x => x[0].desc.Contains(mostMinutes.Key)).ToList();
 
-            return base.ToString();
+            List<(DateTime asleep, DateTime woke)> asleepTimes = new List<(DateTime asleep, DateTime woke)>();
+
+            foreach (var range in mostSleepyGuardShiftNapTimes)
+            {
+                DateTime fall = new DateTime();
+                DateTime woke = new DateTime();
+
+                for (int i = 1; i < range.Count; i++)
+                {
+                    var item = range[i];
+
+                    if (item.desc.Contains("falls"))
+                    {
+                        fall = item.timeStamp;
+                    }
+                    else if (item.desc.Contains("wakes"))
+                    {
+                        woke = item.timeStamp;
+                    }
+                    if (i % 2 == 0 && i > 0)
+                    {
+                        asleepTimes.Add((fall, woke));
+                    }
+                }
+            }
+
+            Guard g = new Guard(mostMinutes.Key.Substring(1));
+
+            foreach (var item in asleepTimes)
+            {
+                for (int i = 0; i < 60; i++)
+                {
+                    if(i < item.asleep.Minute || i >= item.woke.Minute)
+                    {
+                        g.awakeMinutes[i]++;
+                    }
+                }
+            }
+
+            return (g.GetMostSleepyMinute() * int.Parse(g.id)).ToString();
         }
 
         public List<List<Stamp>> GetShiftNapTimes()
@@ -167,11 +206,11 @@ namespace Solutions
 
         public int GetMostSleepyMinute()
         {
-            KeyValuePair<int, int> minute = new KeyValuePair<int, int>();
+            KeyValuePair<int, int> minute = awakeMinutes.First();
 
             foreach (var item in awakeMinutes)
             {
-                if (item.Value > minute.Value)
+                if (item.Value < minute.Value)
                 {
                     minute = item;
                 }
