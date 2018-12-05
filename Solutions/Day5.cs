@@ -22,33 +22,67 @@ namespace Solutions
 
         //this needs to be refactored
         private string RemovePairs(string input){
-            bool noMatches = true;
-            while (noMatches)
+
+            Stack<char> unparsed = new Stack<char>(input.ToCharArray());
+            Stack<char> parsed = new Stack<char>();
+
+            parsed.Push(unparsed.Pop());
+
+            while (unparsed.Count > 0)
             {
-                int index = 0;
-                while (index + 1 < input.Length)
+                char unparsedChar = unparsed.Pop();
+
+                char parsedChar = '0'; 
+                if (parsed.Count == 0 && unparsed.Count > 0)
                 {
-                    char thisChar = input[index];
-                    char nextChar = input[index + 1];
-
-                    if (char.IsLower(thisChar) && char.IsUpper(nextChar) && char.ToLower(nextChar) == thisChar)
-                    {
-                        input = input.Remove(index, 2);
-                        break;
-                    }
-                    else if (char.IsLower(nextChar) && char.IsUpper(thisChar) && char.ToLower(thisChar) == nextChar)
-                    {
-                        input = input.Remove(index, 2);
-                        break;
-                    }
-
-                    index++;
+                    parsedChar = unparsed.Pop();
+                } else if(parsed.Count > 0)
+                {
+                    parsedChar = parsed.Pop();
                 }
-                if (index + 1 == input.Length) noMatches = false;
+                if (parsedChar != '0')
+                {
+                    if (char.IsUpper(unparsedChar) && char.IsLower(parsedChar) && char.ToLower(unparsedChar) == parsedChar)
+                    {
+
+                    } else if (char.IsLower(unparsedChar) && char.IsUpper(parsedChar) && char.ToUpper(unparsedChar) == parsedChar)
+                    {
+
+                    } else
+                    {
+                        parsed.Push(parsedChar);
+                        parsed.Push(unparsedChar);
+                    }
+                }
             }
 
+            //bool noMatches = true;
+            //while (noMatches)
+            //{
+            //    int index = 0;
+            //    while (index + 1 < input.Length)
+            //    {
+            //        char thisChar = input[index];
+            //        char nextChar = input[index + 1];
 
-            return input;
+            //        if (char.IsLower(thisChar) && char.IsUpper(nextChar) && char.ToLower(nextChar) == thisChar)
+            //        {
+            //            input = input.Remove(index, 2);
+            //            break;
+            //        }
+            //        else if (char.IsLower(nextChar) && char.IsUpper(thisChar) && char.ToLower(thisChar) == nextChar)
+            //        {
+            //            input = input.Remove(index, 2);
+            //            break;
+            //        }
+
+            //        index++;
+            //    }
+            //    if (index + 1 == input.Length) noMatches = false;
+            //}
+
+
+            return string.Join("", parsed);
         }
 
         public override string PartTwo()
