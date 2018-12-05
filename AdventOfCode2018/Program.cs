@@ -41,8 +41,23 @@ namespace AdventOfCode2018
                         Console.WriteLine();
                         if (input < solutions.Solutions.Count())
                         {
+                            DateTime startOne = DateTime.Now;
+
                             Console.WriteLine(solutions.Solutions[input].PartOne());
+
+                            DateTime endOne = DateTime.Now;
+                            TimeSpan pOneSpan = endOne - startOne;
+                            Console.WriteLine($"part one in: {pOneSpan.Minutes}:{pOneSpan.Seconds}s:{pOneSpan.Milliseconds}ms");
+
+                            Console.WriteLine();
+
+                            DateTime startTwo = DateTime.Now;
+
                             Console.WriteLine(solutions.Solutions[input].PartTwo());
+
+                            DateTime endTwo = DateTime.Now;
+                            TimeSpan pTwoSpan = endTwo - startTwo;
+                            Console.WriteLine($"part two in: {pTwoSpan.Minutes}:{pTwoSpan.Seconds}s:{pTwoSpan.Milliseconds}ms");
                         } else
                         {
                             Console.WriteLine("Your input was outside the range of the solved problems, going back to the menu...");

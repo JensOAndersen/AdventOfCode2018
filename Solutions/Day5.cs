@@ -32,11 +32,12 @@ namespace Solutions
             {
                 char unparsedChar = unparsed.Pop();
 
-                char parsedChar = '0'; 
+                char parsedChar = '0';
                 if (parsed.Count == 0 && unparsed.Count > 0)
                 {
                     parsedChar = unparsed.Pop();
-                } else if(parsed.Count > 0)
+                }
+                else if (parsed.Count > 0)
                 {
                     parsedChar = parsed.Pop();
                 }
@@ -45,16 +46,21 @@ namespace Solutions
                     if (char.IsUpper(unparsedChar) && char.IsLower(parsedChar) && char.ToLower(unparsedChar) == parsedChar)
                     {
 
-                    } else if (char.IsLower(unparsedChar) && char.IsUpper(parsedChar) && char.ToUpper(unparsedChar) == parsedChar)
+                    }
+                    else if (char.IsLower(unparsedChar) && char.IsUpper(parsedChar) && char.ToUpper(unparsedChar) == parsedChar)
                     {
 
-                    } else
+                    }
+                    else
                     {
                         parsed.Push(parsedChar);
                         parsed.Push(unparsedChar);
                     }
                 }
             }
+            return string.Join("", parsed);
+
+            //OLD SOLUTION, IS CRAP
 
             //bool noMatches = true;
             //while (noMatches)
@@ -81,12 +87,12 @@ namespace Solutions
             //    if (index + 1 == input.Length) noMatches = false;
             //}
 
-
-            return string.Join("", parsed);
+            //return input;
         }
 
         public override string PartTwo()
         {
+
             string input = this.input;
 
             char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
