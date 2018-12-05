@@ -14,11 +14,11 @@ namespace Solutions
             input = utils.ReadFileAsStringArray()[0];
         }
 
-        //public override string PartOne()
-        //{
-        //    string input = this.input;
-        //    return RemovePairs(input).Length.ToString();
-        //}
+        public override string PartOne()
+        {
+            string input = this.input;
+            return RemovePairs(input).Length.ToString();
+        }
 
         private string RemovePairs(string input){
             bool noMatches = true;
@@ -74,7 +74,6 @@ namespace Solutions
                     lowestPair = item;
                 }
             }
-
 
             return lowestPair.Value.ToString();
         }

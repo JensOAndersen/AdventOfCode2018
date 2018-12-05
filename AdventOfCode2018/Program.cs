@@ -23,19 +23,19 @@ namespace AdventOfCode2018
                 Console.WriteLine("3. Exit");
 
                 ConsoleKey key = Console.ReadKey(true).Key;
-
+                Console.WriteLine();
                 switch (key)
                 {
                     //see the solution for a specific day
                     case ConsoleKey.D1:
-                        Console.WriteLine($"Please Choose a number between {0} and {solutions.Solutions.Count() -1} and press Return");
-
+                        Console.Write($"Please Choose a number between {0} and {solutions.Solutions.Count() -1} and press Return :");
                         int input;
                         while (!int.TryParse(Console.ReadLine(), out input))
                         {
-                            Console.WriteLine($"Please choose a valid number between {0} and {solutions.Solutions.Count() -1}");
+                            Console.Write($"Please choose a valid number between {0} and {solutions.Solutions.Count() -1}: ");
                         }
-
+                        Console.WriteLine("Writing out solutions...");
+                        Console.WriteLine();
                         Console.WriteLine(solutions.Solutions[input].PartOne());
                         Console.WriteLine(solutions.Solutions[input].PartTwo());
 
@@ -60,7 +60,8 @@ namespace AdventOfCode2018
                         Console.WriteLine("Invalid Option");
                         break;
                 }
-
+                Console.WriteLine();
+                Console.WriteLine("Tryk på en tast for at gå tilbage til Menueen...");
                 Console.ReadKey();
             }
         }
