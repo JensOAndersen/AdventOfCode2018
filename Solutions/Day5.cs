@@ -20,6 +20,7 @@ namespace Solutions
             return RemovePairs(input).Length.ToString();
         }
 
+        //this needs to be refactored
         private string RemovePairs(string input){
             bool noMatches = true;
             while (noMatches)

@@ -28,16 +28,25 @@ namespace AdventOfCode2018
                 {
                     //see the solution for a specific day
                     case ConsoleKey.D1:
-                        Console.Write($"Please Choose a number between {0} and {solutions.Solutions.Count() -1} and press Return :");
+                        Console.Write($"Please Choose a number between {1} and {solutions.Solutions.Count()} and press Return :");
                         int input;
                         while (!int.TryParse(Console.ReadLine(), out input))
                         {
-                            Console.Write($"Please choose a valid number between {0} and {solutions.Solutions.Count() -1}: ");
+                            Console.Write($"Please choose a valid number between {1} and {solutions.Solutions.Count()}: ");
                         }
+
+                        input--;
+
                         Console.WriteLine("Writing out solutions...");
                         Console.WriteLine();
-                        Console.WriteLine(solutions.Solutions[input].PartOne());
-                        Console.WriteLine(solutions.Solutions[input].PartTwo());
+                        if (input < solutions.Solutions.Count())
+                        {
+                            Console.WriteLine(solutions.Solutions[input].PartOne());
+                            Console.WriteLine(solutions.Solutions[input].PartTwo());
+                        } else
+                        {
+                            Console.WriteLine("Your input was outside the range of the solved problems, going back to the menu...");
+                        }
 
                         break;
 
@@ -61,7 +70,7 @@ namespace AdventOfCode2018
                         break;
                 }
                 Console.WriteLine();
-                Console.WriteLine("Tryk på en tast for at gå tilbage til Menueen...");
+                Console.WriteLine("Push any button to go back to the menu");
                 Console.ReadKey();
             }
         }
