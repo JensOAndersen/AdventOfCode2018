@@ -15,38 +15,33 @@ namespace Solutions
 
         public override string PartOne()
         {
-            Stack<char> unparsedInput = new Stack<char>(input.ToCharArray());
-            Stack<char> parsedInput = new Stack<char>();
-
-            parsedInput.Push(unparsedInput.Pop());
-            while(unparsedInput.Count > 0)
+            bool noMatches = true;
+            while (noMatches)
             {
-                Compare(parsedInput, unparsedInput);
-            }
-
-            void Compare(Stack<char> parsed, Stack<char> unparsed)
-            {
-                bool notDoneP = parsed.TryPop(out char p);
-                bool notDoneUnP = unparsed.TryPop(out char unP);
-                if (notDoneP && notDoneUnP)
+                int index = 0;
+                while (index + 1 < input.Length)
                 {
-                    if (char.IsLower(unP) && char.IsUpper(p) && char.ToLower(p) == unP)
-                    {
-                        Compare(parsed, unparsed);
-                    }
-                    else if (char.IsLower(p) && char.IsUpper(unP) && char.ToLower(unP) == p)
-                    {
-                        Compare(parsed, unparsed);
-                    } else
-                    {
-                        parsedInput.Push(p);
-                        parsedInput.Push(unP);
-                    }
+                    char thisChar = input[index];
+                    char nextChar = input[index + 1];
 
+                    if (char.IsLower(thisChar) && char.IsUpper(nextChar) && char.ToLower(nextChar) == thisChar)
+                    {
+                        input = input.Remove(index, 2);
+                        break;
+                    }
+                    else if (char.IsLower(nextChar) && char.IsUpper(thisChar) && char.ToLower(thisChar) == nextChar)
+                    {
+                        input = input.Remove(index, 2);
+                        break;
+                    }
+                    
+                    index++;
                 }
+                if (index + 1 == input.Length) noMatches = false;
             }
 
-            return parsedInput.Count.ToString();
+
+            return input.Length.ToString();
         }
     }
 }
